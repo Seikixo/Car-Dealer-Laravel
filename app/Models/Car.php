@@ -12,4 +12,8 @@ class Car extends Model
     public function feature(){
         return $this->hasMany(Feature::class);
     }
+
+    public function scopeCreateCar($query, $data){
+        return $query->create($data);
+    }
 }
