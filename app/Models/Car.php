@@ -25,4 +25,8 @@ class Car extends Model
         return $query->create($data);
     }
 
+    public function scopeUpdateCar($query, $id, $data){
+        return $query->where('id', $id)->update($data);
+    }
+
 }
