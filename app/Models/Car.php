@@ -17,7 +17,12 @@ class Car extends Model
         return $query->get();
     }
 
+    public function scopeGetCar($query, $id){
+        return $query->find($id);
+    }
+
     public function scopeCreateCar($query, $data){
         return $query->create($data);
     }
+
 }
