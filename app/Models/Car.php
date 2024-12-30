@@ -29,4 +29,8 @@ class Car extends Model
         return $query->where('id', $id)->update($data);
     }
 
+    public function scopeDeleteCar($query, $id){
+        return $query->where('id', $id)->delete();
+    }
+
 }
