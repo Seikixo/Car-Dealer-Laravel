@@ -65,4 +65,19 @@ class Car extends Model
         return $query->get();
     }
 
+    public function scopeSearchCars($query, $search){
+        if(!empty($search)){
+            $query->where(function($q) use ($search){
+                $q->where('make', 'like', '%'.$search.'%')
+                ->orWhere('model', 'like', '%'.$search.'%')
+                ->orWhere('color', 'like', '%'.$search.'%')
+                ->orWhere('year', 'like', '%'.$search.'%')
+                ->orWhere('price', 'like', '%'.$search.'%')
+                ->orWhere('status', 'like', '%'.$search.'%');
+            });
+        }
+
+        return $query->get();
+    }
+
 }
