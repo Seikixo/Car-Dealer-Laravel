@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Feature extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'car_id', 'feature_name'];
+    protected $fillable = ['car_id', 'feature_name'];
 
     public function car(){
         return $this->belongsTo(Car::class);
     }
+
+
 }
