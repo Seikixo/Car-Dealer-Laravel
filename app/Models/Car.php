@@ -25,6 +25,10 @@ class Car extends Model
         return $query->with('feature')->find($id);
     }
 
+    public function scopeDeleteCarFeature($featureId){
+        return $this->feature()->where('id', $featureId)->delete();
+    }
+
     public function scopeCreateCar($query, $data){
         return $query->create($data);
     }

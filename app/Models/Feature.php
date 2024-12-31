@@ -14,5 +14,16 @@ class Feature extends Model
         return $this->belongsTo(Car::class);
     }
 
+    public static function createCarFeature($carId, $featureName){
+        return self::create([
+            'car_id' => $carId,
+            'feature_name' => $featureName
+        ]);
+    }
 
+    public static function deleteCarFeature($carId, $featureName){
+        return self::where('car_id', $carId)
+                    ->where('feature_name', $featureName)
+                    ->delete();
+    }
 }
