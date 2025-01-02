@@ -13,6 +13,10 @@ class Car extends Model
         return $this->hasMany(Feature::class);
     }
 
+    public function review(){
+        return $this->hasMany(Reviews::class);
+    }
+
     public function scopeGetCars($query){
         return $query->get();
     }
@@ -21,12 +25,8 @@ class Car extends Model
         return $query->find($id);
     }
 
-    public function scopeGetCarFeatures($query, $id){
-        return $query->with('feature')->find($id);
-    }
-
-    public function scopeDeleteCarFeature($featureId){
-        return $this->feature()->where('id', $featureId)->delete();
+    public function scopeWithFeaturesAndReviews($query, $id){
+        return $query->with(['feature', 'review'])->find($id);
     }
 
     public function scopeCreateCar($query, $data){
