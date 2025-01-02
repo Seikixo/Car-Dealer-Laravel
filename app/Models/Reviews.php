@@ -14,7 +14,7 @@ class Reviews extends Model
         return $this->belongsTo(Car::class);
     }
 
-    public static function createReviews($car_id, $pros, $cons, $ratings){
+    public static function createCarReviews($car_id, $pros, $cons, $ratings){
         return self::create([
             'car_id' => $car_id,
             'pros' => $pros,
