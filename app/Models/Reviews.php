@@ -22,4 +22,8 @@ class Reviews extends Model
             'ratings' => $ratings
         ]);
     }
+
+    public static function deleteCarReviews($id){
+        return self::where('id', $id)->delete();
+    }
 }
