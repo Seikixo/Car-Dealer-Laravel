@@ -23,7 +23,7 @@ class Reviews extends Model
         ]);
     }
 
-    public static function deleteCarReviews($id){
-        return self::where('id', $id)->delete();
+    public static function deleteCarReviews($reviewId){
+        return self::where('id', $reviewId)->delete();
     }
 }

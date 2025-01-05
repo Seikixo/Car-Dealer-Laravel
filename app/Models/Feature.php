@@ -21,9 +21,7 @@ class Feature extends Model
         ]);
     }
 
-    public static function deleteCarFeature($carId, $featureName){
-        return self::where('car_id', $carId)
-                    ->where('feature_name', $featureName)
-                    ->delete();
+    public static function deleteCarFeature($featureId){
+        return self::where('id', $featureId)->delete();
     }
 }
