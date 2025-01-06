@@ -92,4 +92,8 @@ class Car extends Model
         return $query->withAvg('review', 'ratings')->get();
     }
 
+    public function scopeWithCountRating($query){
+        return $query->withCount('review')->get();
+    }
+
 }
