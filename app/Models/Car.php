@@ -65,8 +65,6 @@ class Car extends Model
         if(isset($filters['status']) && !empty($filters['status'])){
             $query->where('status', $filters['status']);
         }
-
-        return $query->get();
     }
 
     public function scopeSearchCars($query, $search){
@@ -80,8 +78,6 @@ class Car extends Model
                 ->orWhere('status', 'like', '%'.$search.'%');
             });
         }
-
-        return $query->get();
     }
 
     public function scopeWithFeatures($query){
@@ -93,11 +89,11 @@ class Car extends Model
     }
 
     public function scopeWithAvgRating($query){
-        return $query->withAvg('review', 'ratings')->get();
+        return $query->withAvg('review', 'ratings');
     }
 
     public function scopeWithCountRating($query){
-        return $query->withCount('review')->get();
+        return $query->withCount('review');
     }
 
 }
