@@ -84,8 +84,12 @@ class Car extends Model
         return $query->get();
     }
 
-    public function scopeWithFeaturesAndReviews($query, $id){
-        return $query->with(['feature', 'review'])->find($id);
+    public function scopeWithFeatures($query){
+        return $query->with('feature');
+    }
+
+    public function scopeWithReviews($query){
+        return $query->with('review');
     }
 
     public function scopeWithAvgRating($query){
