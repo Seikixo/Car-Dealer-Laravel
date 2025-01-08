@@ -96,4 +96,8 @@ class Car extends Model
         return $query->withCount('review');
     }
 
+    public function scopeWithHighestAvgRating($query){
+        return $query->withAvg('review', 'ratings')->orderBy('review_avg_ratings', 'desc');
+    }
+
 }
