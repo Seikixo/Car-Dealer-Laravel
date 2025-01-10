@@ -84,6 +84,10 @@ class Car extends Model
         return $query->with('feature');
     }
 
+    public function scopeWithFilterFeature($query, $feature){
+        return $query->whereHas('feature', fn($q) => $q->where('feature_name', $feature));
+    }
+
     public function scopeWithReviews($query){
         return $query->with('review');
     }
@@ -103,5 +107,7 @@ class Car extends Model
     public function scopeWithHighestCountRating($query){
         return $query->withCount('review')->orderBy('review_count', 'desc');
     }
+
+
 
 }
