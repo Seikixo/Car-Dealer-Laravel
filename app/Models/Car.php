@@ -37,6 +37,10 @@ class Car extends Model
         return $query->where('id', $id)->delete();
     }
 
+    public function scopeCountCar($query){
+        return $query->count();
+    }
+
     public function scopeFilterCars($query, $filters){
         if(isset($filters['make']) && !empty($filters['make'])){
             $query->where('make', $filters['make']);
@@ -69,14 +73,14 @@ class Car extends Model
 
     public function scopeSearchCars($query, $search){
         if(!empty($search)){
-            $query->where(function($q) use ($search){
+            $query->where(fn($q) =>
                 $q->where('make', 'like', '%'.$search.'%')
                 ->orWhere('model', 'like', '%'.$search.'%')
                 ->orWhere('color', 'like', '%'.$search.'%')
                 ->orWhere('year', 'like', '%'.$search.'%')
                 ->orWhere('price', 'like', '%'.$search.'%')
-                ->orWhere('status', 'like', '%'.$search.'%');
-            });
+                ->orWhere('status', 'like', '%'.$search.'%')
+            );
         }
     }
 
